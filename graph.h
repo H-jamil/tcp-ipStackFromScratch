@@ -21,8 +21,9 @@
  #define __GRAPH__
 
  #include <assert.h>
- #include "gluethread/gluethread.h"
- #include "net.h"
+ #include "gluethread/glthread.h"
+ #include <stddef.h>
+ //#include "net.h"
 
  #define NODE_NAME_SIZE   16
  #define IF_NAME_SIZE     16
@@ -95,10 +96,40 @@
       }
       return -1;
   }
+
+  static inline interface_t * get_node_if_by_name(node_t *node, char *if_name){
+
+      int i ;
+      interface_t *intf;
+
+      for( i = 0 ; i < MAX_INTF_PER_NODE; i++){
+          intf = node->intf[i];
+          //if(!intf) return NULL;
+          if(strncmp(intf->if_name, if_name, IF_NAME_SIZE) == 0){
+              return intf;
+          }
+      }
+      return NULL;
+  }
+
+  static inline node_t * get_node_by_node_name(graph_t *topo, char *node_name){
+
+      node_t *node;
+      glthread_t *curr;
+
+      ITERATE_GLTHREAD_BEGIN(&topo->node_list, curr){
+
+          node = graph_glue_to_node(curr);
+          if(strncmp(node->node_name, node_name, strlen(node_name)) == 0)
+              return node;
+      } ITERATE_GLTHREAD_END(&topo->node_list, curr);
+      return NULL;
+  }
+
   /*Display Routines*/
   void dump_graph(graph_t *graph);
   void dump_node(node_t *node);
   void dump_interface(interface_t *interface);
 
-  
+
   #endif /* __NW_GRAPH_ */
