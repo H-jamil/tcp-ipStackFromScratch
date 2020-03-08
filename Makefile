@@ -9,7 +9,7 @@ OBJS=gluethread/glthread.o \
 graphTopologyTest:testapp.o ${OBJS}
 	${CC} ${CFLAGS} testapp.o ${OBJS} -o graphTopologyTest
 
-testapp.o:testapp.c
+testapp.o:testApp.c
 	${CC} ${CFLAGS} -c testApp.c -o testapp.o
 
 gluethread/glthread.o:gluethread/glthread.c
