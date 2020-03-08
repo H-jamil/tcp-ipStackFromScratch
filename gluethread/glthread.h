@@ -12,19 +12,19 @@
  *
  *         Author:  Er. Abhishek Sagar, Networking Developer (AS), sachinites@gmail.com
  *        Company:  Brocade Communications(Jul 2012- Mar 2016), Current : Juniper Networks(Apr 2017 - Present)
- *        
+ *
  *        This file is part of the SPFComputation distribution (https://github.com/sachinites).
  *        Copyright (c) 2017 Abhishek Sagar.
  *        This program is free software: you can redistribute it and/or modify
- *        it under the terms of the GNU General Public License as published by  
+ *        it under the terms of the GNU General Public License as published by
  *        the Free Software Foundation, version 3.
  *
- *        This program is distributed in the hope that it will be useful, but 
- *        WITHOUT ANY WARRANTY; without even the implied warranty of 
- *        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *        This program is distributed in the hope that it will be useful, but
+ *        WITHOUT ANY WARRANTY; without even the implied warranty of
+ *        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *        General Public License for more details.
  *
- *        You should have received a copy of the GNU General Public License 
+ *        You should have received a copy of the GNU General Public License
  *        along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * =====================================================================================
@@ -83,11 +83,11 @@ glthread_add_last(glthread_t *base_glthread, glthread_t *new_glthread);
 void
 delete_glthread_list(glthread_t *base_glthread);
 
-unsigned int 
+unsigned int
 get_glthread_list_count(glthread_t *base_glthread);
 
 void
-glthread_priority_insert(glthread_t *base_glthread,     
+glthread_priority_insert(glthread_t *base_glthread,
                          glthread_t *glthread,
                          int (*comp_fn)(void *, void *),
                          int offset);

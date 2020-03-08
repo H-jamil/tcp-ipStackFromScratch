@@ -105,7 +105,7 @@ GLTHREAD_TO_STRUCT(graph_glue_to_node, node_t, graph_glue);
 
       for( i = 0 ; i < MAX_INTF_PER_NODE; i++){
           intf = node->intf[i];
-          //if(!intf) return NULL;
+          if(!intf) return NULL;
           if(strncmp(intf->if_name, if_name, IF_NAME_SIZE) == 0){
               return intf;
           }

@@ -1,16 +1,16 @@
 CC=gcc
 CFLAGS=-g
-TARGET:graphTopologyTest
+TARGET:test.exe
 
 OBJS=gluethread/glthread.o \
 		  graph.o 		   \
 		  topologies.o
 
-graphTopologyTest:testapp.o ${OBJS}
-	${CC} ${CFLAGS} testapp.o ${OBJS} -o graphTopologyTest
+test.exe:testapp.o ${OBJS}
+	${CC} ${CFLAGS} testapp.o ${OBJS} -o test.exe
 
-testapp.o:testApp.c
-	${CC} ${CFLAGS} -c testApp.c -o testapp.o
+testapp.o:testapp.c
+	${CC} ${CFLAGS} -c testapp.c -o testapp.o
 
 gluethread/glthread.o:gluethread/glthread.c
 	${CC} ${CFLAGS} -c -I gluethread gluethread/glthread.c -o gluethread/glthread.o
@@ -22,3 +22,4 @@ topologies.o:topologies.c
 clean:
 	rm *.o
 	rm gluethread/glthread.o
+	rm *exe

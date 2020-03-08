@@ -18,9 +18,7 @@
 
 
 #include "graph.h"
-
-graph_t *
-build_first_topo(){
+graph_t * build_first_topo(){
 
 #if 0
 
