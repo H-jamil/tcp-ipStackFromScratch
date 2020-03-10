@@ -25,3 +25,4 @@ clean:
 	rm *.o
 	rm gluethread/glthread.o
 	rm test
+	rm ex*
