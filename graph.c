@@ -51,6 +51,13 @@
 
      empty_intf_slot = get_node_intf_available_slot(node2);
      node2->intf[empty_intf_slot] = &link->intf2;
+
+     init_intf_nw_prop(&link->intf1.intf_nw_props);
+     init_intf_nw_prop(&link->intf2.intf_nw_props);
+
+     /*Now Assign Random generated Mac address to the Interfaces*/
+     interface_assign_mac_address(&link->intf1);
+     interface_assign_mac_address(&link->intf2);
  }
 
  graph_t * create_new_graph(char *topology_name){
@@ -68,7 +75,7 @@
      node_t *node = calloc(1, sizeof(node_t));
      strncpy(node->node_name, node_name, NODE_NAME_SIZE);
      node->node_name[NODE_NAME_SIZE] = '\0';
-
+     init_node_nw_prop(&node->node_nw_prop);
      init_glthread(&node->graph_glue);
      glthread_add_next(&graph->node_list, &node->graph_glue);
      return node;
@@ -107,7 +114,8 @@
     link_t *link = interface->link;
     node_t *nbr_node = get_nbr_node(interface);
 
-    printf(" Local Node : %s, Interface Name = %s, Nbr Node %s, cost = %u\n",
+    printf("Interface Name = %s\n\tNbr Node %s, Local Node : %s, cost = %u\n",
+             interface->if_name,
              interface->att_node->node_name,
-             interface->if_name, nbr_node->node_name, link->cost);
+             nbr_node->node_name, link->cost);
  }

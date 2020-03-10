@@ -51,8 +51,7 @@ typedef struct node_nw_prop_{
     ip_add_t lb_addr; /*loopback address of node*/
 } node_nw_prop_t;
 
-static inline void
-init_node_nw_prop(node_nw_prop_t *node_nw_prop) {
+static inline void init_node_nw_prop(node_nw_prop_t *node_nw_prop) {
 
     node_nw_prop->flags = 0;
     node_nw_prop->is_lb_addr_config = FALSE;
@@ -71,8 +70,7 @@ typedef struct intf_nw_props_ {
 } intf_nw_props_t;
 
 
-static inline void
-init_intf_nw_prop(intf_nw_props_t *intf_nw_props) {
+static inline void init_intf_nw_prop(intf_nw_props_t *intf_nw_props) {
 
     memset(intf_nw_props->mac_add.mac , 0 , 48);
     intf_nw_props->is_ipadd_config = FALSE;
@@ -80,8 +78,7 @@ init_intf_nw_prop(intf_nw_props_t *intf_nw_props) {
     intf_nw_props->mask = 0;
 }
 
-void
-interface_assign_mac_address(interface_t *interface);
+void interface_assign_mac_address(interface_t *interface);
 
 /*GET shorthand Macros*/
 #define IF_MAC(intf_ptr)   ((intf_ptr)->intf_nw_props.mac_add.mac)
