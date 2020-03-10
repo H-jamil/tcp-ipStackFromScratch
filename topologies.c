@@ -41,7 +41,7 @@ graph_t * build_first_topo(){
 #endif
 
 
-graph_t *topo = create_new_graph("First Graph with network Properties");
+graph_t *topo = create_new_graph("First Graph with Networking");
 node_t *R0_re = create_graph_node(topo, "R0_re");
 node_t *R1_re = create_graph_node(topo, "R1_re");
 node_t *R2_re = create_graph_node(topo, "R2_re");
