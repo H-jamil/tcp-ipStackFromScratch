@@ -23,7 +23,7 @@
  #include <assert.h>
  #include "gluethread/glthread.h"
  #include <stddef.h>
- //#include "net.h"
+ #include "net.h"
 
  #define NODE_NAME_SIZE   16
  #define IF_NAME_SIZE     16
@@ -38,7 +38,7 @@
      char if_name[IF_NAME_SIZE];
      struct node_ *att_node; //pointer usage through Forward Declarations
      struct link_ *link;
-     //intf_nw_props_t intf_nw_props;
+     intf_nw_props_t intf_nw_props;
  } interface_t;
 
  struct link_ {
@@ -55,7 +55,7 @@
      glthread_t graph_glue;
      // unsigned int udp_port_number;
      // int udp_sock_fd;
-     // node_nw_prop_t node_nw_prop;
+     node_nw_prop_t node_nw_prop;
  };
 GLTHREAD_TO_STRUCT(graph_glue_to_node, node_t, graph_glue);
 
