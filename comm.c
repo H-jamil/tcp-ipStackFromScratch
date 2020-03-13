@@ -84,10 +84,10 @@ static void _pkt_receive(node_t *receving_node,
                     recv_intf->if_name, receving_node->node_name);
         return;
     }
-    printf("new packet received\n");
+
     pkt_receive(receving_node, recv_intf, pkt_with_aux_data + IF_NAME_SIZE,
                 pkt_size - IF_NAME_SIZE);
-
+    printf("new packet received by %s\n",receving_node->node_name);
 }
 
 static void * _network_start_pkt_receiver_thread(void *arg){
@@ -144,6 +144,7 @@ static void * _network_start_pkt_receiver_thread(void *arg){
             }
 
         } ITERATE_GLTHREAD_END(&topo->node_list, curr);
+        printf("Listening");
     }
 }
 
@@ -160,6 +161,7 @@ void network_start_pkt_receiver_thread(graph_t *topo){
     pthread_create(&recv_pkt_thread, &attr,
                     _network_start_pkt_receiver_thread,
                     (void *)topo);
+    printf("Thread created for receiving \n");
 }
 
 static int _send_pkt_out(int sock_fd, char *pkt_data, unsigned int pkt_size,
@@ -175,7 +177,7 @@ static int _send_pkt_out(int sock_fd, char *pkt_data, unsigned int pkt_size,
 
     rc = sendto(sock_fd, pkt_data, pkt_size, 0,
             (struct sockaddr *)&dest_addr, sizeof(struct sockaddr));
-
+    printf("packet send from _send_pkt_out\n" );
     return rc;
 }
 

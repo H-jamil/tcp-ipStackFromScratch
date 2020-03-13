@@ -39,6 +39,6 @@ int main(int argc, char **argv){
     //assert(oif);
     send_pkt_out(data,strlen(data),oif);
     printf("Message Sent\n");
-    //start_shell();
+    start_shell();
     return 0;
 }
