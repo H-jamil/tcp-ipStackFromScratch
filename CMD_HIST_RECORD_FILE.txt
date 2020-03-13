@@ -12,3 +12,5 @@ config node amazon loopback 122.10.1.
 config no ?
 config no node amazon loopback 122.10.1.
 show topology
+show topology
+.
